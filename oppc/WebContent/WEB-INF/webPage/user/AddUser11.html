@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Registration Form</title>
+
+    <!-- ExtJS -->
+    <script type="text/javascript" src="http://localhost:8080/oppc/examples/shared/include-ext.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/oppc/examples/shared/options-toolbar.js"></script>
+
+    <!-- Shared -->
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/oppc/example/shared/example.css" />
+
+    <!-- GC -->
+
+
+    <!-- Example -->
+	<script type="text/javascript">
+		Ext.onReady(function(){
+			Ext.create('Ext.Button',{
+				text:'Dynamic Handler Button',
+				renderTo:Ext.getBody(),
+				handler:function(){
+					if(this.clickCount){
+						this.clickCount++;
+						alert('you hava clicked the button '+this.clickCount+' times ,try again..');
+					}else{
+						
+						this.clickCount = 1;
+						alert('you just clickes the button for the first time!  Try pressing it again..');
+					}
+				}
+			});
+			new Ext.Container({
+				renderTo:Ext.getBody(),
+				items:[{
+					xtype:'button',
+					text:'My Button',
+					allowDepress:false,
+					handler: function(){
+					alert('click me');
+					},
+					scale:'large'
+				}]
+				
+			});
+			Ext.create('Ext.Button', {
+				text      : 'Menu button',
+				renderTo  : Ext.getBody(),
+				arrowAlign: 'right',
+				menu      : [
+					{text: 'Item 1'},
+					{text: 'Item 2'},
+					{text: 'Item 3'},
+					{text: 'Item 4'}
+				]
+			});
+			Ext.create('Ext.Button', {
+				text     : 'Button',
+				renderTo : Ext.getBody(),
+				listeners: {
+					click: function() {
+						// this == the button, as we are in the local scope
+						this.setText('I was clicked!');
+					},
+					mouseover: function() {
+						// set a new config which says we moused over, if not already set
+						if (!this.mousedOver) {
+							this.mousedOver = true;
+							alert('You moused over a button!\n\nI wont do this again.');
+						}
+					}
+				}
+			});
+			
+			new Ext.form.Panel({
+				width:350,
+				border:false,
+				bodyBorder:false,
+				renderTo:Ext.getBody(),
+				fieldDefaults: {
+					labelWidth: 75,
+					msgTarget: 'side'
+				},
+				defaults: {
+					anchor: '100%'
+				},
+				items: [{
+					xtype:'tabpanel',
+					activeTab: 0,
+					defaults:{
+						bodyStyle:'padding:10px'
+					},
+
+					items:[{
+						title:'Personal Details',
+						defaultType: 'textfield',
+
+						items: [{
+							fieldLabel: 'First Name',
+							name: 'first',
+							allowBlank:false,
+							value: 'Ed'
+						},{
+							fieldLabel: 'Last Name',
+							name: 'last',
+							value: 'Spencer'
+						},{
+							fieldLabel: 'Company',
+							name: 'company',
+							value: 'Ext JS'
+						}, {
+							fieldLabel: 'Email',
+							name: 'email',
+							vtype:'email'
+						}]
+					},{
+						title:'Phone Numbers',
+						defaultType: 'textfield',
+
+						items: [{
+							fieldLabel: 'Home',
+							name: 'home',
+							value: '(888) 555-1212'
+						},{
+							fieldLabel: 'Business',
+							name: 'business'
+						},{
+							fieldLabel: 'Mobile',
+							name: 'mobile'
+						},{
+							fieldLabel: 'Fax',
+							name: 'fax'
+						}]
+					}]
+				}],
+
+				buttons: [{
+					text: 'Save'
+				},{
+					text: 'Cancel'
+				}]
+			});
+		});
+	</script>
+</head>
+<body>
+	
+    <h1>Registration Form</h1>
+	
+
+    
+</body>
+</html>

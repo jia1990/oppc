@@ -161,7 +161,8 @@ Ext.require(['*']);
 					nodeId = record.raw.id; //获取点击的节点id
 					//Ext.Msg.alert('text', nodeId);
 					nodeText = record.raw.text; //获取点击的节点text
-					//Ext.Msg.alert('info', nodeId + nodeText+"==="+tree_store.getNodeById(nodeId).hasChildNodes());
+					nodeUrl = record.raw.urlid;
+					Ext.Msg.alert('info', nodeId + nodeUrl + nodeText+"==="+tree_store.getNodeById(nodeId).hasChildNodes());
 					if (tree_store.getNodeById(nodeId).hasChildNodes() === true) {					
 					}
 					else {					
@@ -172,7 +173,7 @@ Ext.require(['*']);
 								'title' : nodeText,
 								closable : true,
 								autoLoad : {
-									url : 'Welcome.sp',//根据页面的id变成动态的路径访问
+									url : nodeUrl,//根据页面的id变成动态的路径访问
 									scripts : true
 								} // 通过autoLoad属性载入目标页,如果要用到脚本,必须加上scripts属性
 							});

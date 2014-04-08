@@ -54,7 +54,7 @@ public class PropertiesTool {
 	 */
 	public static Properties loadAllProperties(String resoName) throws IOException{
 		
-		Enumeration<URL> urls  = PropertiesTool.class.getClassLoader().getResources("config.properties");
+		Enumeration<URL> urls  = PropertiesTool.class.getClassLoader().getResources(resoName);
 		Properties properties=new Properties();
 		while(urls.hasMoreElements()){
 			URL url = urls.nextElement();

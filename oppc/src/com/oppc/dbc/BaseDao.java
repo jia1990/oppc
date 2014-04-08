@@ -5,12 +5,24 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.transform.Transformers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+
+
+
+
+
+import com.oppc.user.entity.MenuEntity;
+import com.oppc.user.entity.MenuPEntity;
 
 
 /**
@@ -136,6 +148,23 @@ public class BaseDao<T extends java.io.Serializable, F extends java.io.Serializa
 		return null;
 	}
 	
-	
+	/**
+	 * 根据传入的sql查询对象，并返回结果
+	 * @param sql
+	 * @return
+	 */
+	public List getAllBySql(String sql){
+		
+		if(StringUtils.isBlank(sql)){
+			return null;
+		}
+
+		SQLQuery sqlQuery = this.getSession().createSQLQuery(sql);
+		sqlQuery.setResultTransformer(Transformers.aliasToBean(MenuPEntity.class));
+
+		
+
+		return sqlQuery.list();
+	}
 	
 }

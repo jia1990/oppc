@@ -1,5 +1,7 @@
 package com.oppc.user.service;
 
+import java.util.List;
+
 import com.oppc.user.entity.UserEntity;
 /**
  * 用户表的业务接口
@@ -29,4 +31,9 @@ public interface IUserService {
 	 * @return
 	 */
 	public boolean addUser(UserEntity userEntity);
+	/**
+	 * 这是菜单的查询方法
+	 * @return
+	 */
+	public List findMenu();
 }

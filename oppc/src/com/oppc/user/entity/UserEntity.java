@@ -11,6 +11,10 @@ import javax.persistence.Table;
  * @author xj
  * 用户信息表(t_user)
  */
+/**
+ * @author Administrator
+ *
+ */
 @Entity
 @Table(name="bs_user")
 public class UserEntity implements java.io.Serializable{
@@ -34,6 +38,9 @@ public class UserEntity implements java.io.Serializable{
 	
 	/**用户出生日期*/
 	private Date dtBirday;
+	
+	/**用户权限 1代表超级用户，2是普通用户*/
+	private int intStatue;
 	
 	
 	/**
@@ -116,6 +123,23 @@ public class UserEntity implements java.io.Serializable{
 	 */
 	public void setDtBirday(Date dtBirday) {
 		this.dtBirday = dtBirday;
+	}
+
+	/**
+	 * 用户权限
+	 * @return
+	 */
+	@Column(name="int_statue")
+	public int getIntStatue() {
+		return intStatue;
+	}
+
+	/**
+	 * 用户权限
+	 * @param intStatue
+	 */
+	public void setIntStatue(int intStatue) {
+		this.intStatue = intStatue;
 	}
 	
 	

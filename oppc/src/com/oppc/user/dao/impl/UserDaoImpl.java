@@ -1,5 +1,7 @@
 package com.oppc.user.dao.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.oppc.dbc.BaseDao;
@@ -46,6 +48,38 @@ public class UserDaoImpl extends BaseDao<UserEntity,String>{
 		}
 		return null;
 	}
-
+	
+	
+	/**
+	 * 这是查询菜单的方法，主要是根据纯sql语句进行查询
+	 * @return
+	 */
+	public List findMenu(){
+		
+//		String hsql = "select c.int_disId pid,c.vc_disText pname,b.int_disId zid,b.vc_disText zname,"
+//				+ "a.int_disId cid,a.vc_disText cname from os_menu a,os_menu b,os_menu c "
+//				+ "where a.int_parId=b.int_disId and b.int_parId=c.int_disId";
+//		
+//		List listMenu = this.getAllBySql(hsql);
+//		
+//		if(listMenu.size() != 0){
+//			
+//			return listMenu;
+//		}
+//		
+		String sql = "select c.int_disId rooId,c.vc_disText rootStr,b.int_disId fatherId,b.vc_disText fatherStr,"
+				+ "a.int_disId childId,a.vc_disText childStr,a.vc_disUrl childUrl from os_menu a,os_menu b,os_menu c "
+				+ "where a.int_parId=b.int_disId and b.int_parId=c.int_disId";
+		
+		List listMenu = this.getAllBySql(sql);
+		
+		if(listMenu.size() != 0){
+			
+			return listMenu;
+		}
+		
+		return null;
+		
+	}
 	
 }

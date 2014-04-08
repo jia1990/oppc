@@ -55,4 +55,27 @@ public class UserController {
 		}
 	}
 	
+	/**
+	 * 这是用户管理的方法
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("Manage1")
+	public String manageUser(HttpServletRequest request,HttpServletResponse response){
+		
+		return "user/Sjoo";
+	}
+	
+	/**
+	 * 这是用户管理的方法2
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("Manage2")
+	public String manageUser2(HttpServletRequest request,HttpServletResponse response){
+		
+		return "user/Sjoo2";
+	}
 }

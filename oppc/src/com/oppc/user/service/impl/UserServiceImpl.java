@@ -1,5 +1,7 @@
 package com.oppc.user.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,22 @@ public class UserServiceImpl implements IUserService{
 		}
 		
 		return false;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.oppc.user.service.IUserService#findMenu()
+	 */
+	@Override
+	public List findMenu() {
+		// TODO Auto-generated method stub
+		List listMenu = userDaoImpl.findMenu();
+		
+		if(listMenu.size()!=0){
+			
+			return listMenu;
+		}
+		return null;
 	}
 
 }
